@@ -3,11 +3,10 @@
 #include <string>
 
 static pid_t pid = 0;
-using namespace std;
 
-void takePic (char* filename) 
+void takePic (char* filename)
 {
-	if ((pid = fork()) == 0) 
+	if((pid = fork()) == 0)
 	{
 		execl("/usr/bin/raspistill",
 			"/usr/bin/raspistill",
@@ -18,12 +17,4 @@ void takePic (char* filename)
 			NULL);
 	}
 }
-
-void stopPic (void) 
-{
-	if (pid) 
-	{
-		kill(pid, 10);
-	}
-}	
 
